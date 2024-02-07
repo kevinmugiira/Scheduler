@@ -15,8 +15,8 @@ public class SchedulerConfig {
     @Autowired
     private ReportGenerationScheduler scheduler;
 
-    @Value("${report.startDate}")
-    private String startDateStr;
+//    @Value("${report.startDate}")
+//    private String startDateStr;
 
     @Value("${report.endDate}")
     private String endDateStr;
@@ -24,10 +24,10 @@ public class SchedulerConfig {
     @PostConstruct
     public void init() {
         // Parse the start and end dates from strings
-        LocalDate startDate = LocalDate.parse(startDateStr);
+//        LocalDate startDate = LocalDate.parse(startDateStr);
         LocalDate endDate = LocalDate.parse(endDateStr);
 
         // Set the dates in the scheduler
-        scheduler.setDates(startDate, endDate);
+        scheduler.setDates(endDate);
     }
 }

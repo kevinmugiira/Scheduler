@@ -36,8 +36,12 @@ public class SchedulerService {
     private static final Logger logger = LoggerFactory.getLogger(SchedulerController.class);
 
 
-    public List<SmsResponse> getMessages(LocalDate startDate, LocalDate endDate) {
+    public List<SmsResponse> getMessages(LocalDate endDate) {
+
+        // Calculate the endDate (one month prior to startDate)
+        LocalDate startDate = endDate.minusMonths(1);
         List<Object[]> messages = schedulerRepo.getTxnTypeCount(startDate, endDate);
+        System.out.println(messages);
         logger.info("Size of myData: {}", messages.size());
 
         for (Object[] responses : messages) {
@@ -120,7 +124,12 @@ public class SchedulerService {
 //        return outputStream.toByteArray();
 //    }
 
-    public void generateReport(LocalDate startDate, LocalDate endDate) throws DocumentException, IOException  {
+    public void generateReport(LocalDate endDate) throws DocumentException, IOException  {
+
+        // Calculate the endDate (one month prior to startDate)
+        LocalDate startDate = endDate.minusMonths(1);
+        System.out.println(startDate);
+
         List<Object[]> myData = schedulerRepo.getTxnTypeCount(startDate, endDate);
         List<ChannelsModel> myChannels = channelsRepo.findAll();
         Context context = new Context();
@@ -131,6 +140,7 @@ public class SchedulerService {
             context.setVariable("data2", Collections.emptyList());
         }
 
+        // logging the data
         for (ChannelsModel da : myChannels) {
             StringBuilder strs = new StringBuilder();
             strs.append("[");
@@ -138,6 +148,8 @@ public class SchedulerService {
             strs.append("]");
             System.out.println(strs.toString());
         }
+
+        // logging the data
         for (Object[] row : myData) {
             StringBuilder rowString = new StringBuilder();
             rowString.append("[");
@@ -176,7 +188,6 @@ public class SchedulerService {
             renderer.finishPDF(); // Close the PDF document
             renderer = null; // Release the reference
         }
-//        return new byte[0];
     }
 
 }

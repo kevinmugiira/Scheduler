@@ -46,9 +46,8 @@ public class SchedulerController {
     @GetMapping("/txt")
     @ResponseStatus(HttpStatus.OK)
     public List<SmsResponse> getTxt(
-            @RequestParam("startDate") LocalDate startDate,
-            @RequestParam("endDate") LocalDate endDate) {
-        return schedulerService.getMessages(startDate, endDate);
+            @RequestParam("startDate") LocalDate startDate) {
+        return schedulerService.getMessages(startDate);
     }
 
     @GetMapping("/smsreport")
@@ -62,9 +61,8 @@ public class SchedulerController {
     @GetMapping("/txttypereport")
     public void getTxtType(HttpServletResponse response,
             @RequestParam("startDate") LocalDate startDate,
-            @RequestParam("endDate") LocalDate endDate,
                            Model model) throws IOException, DocumentException {
-        List<SmsResponse> myData = schedulerService.getMessages(startDate, endDate);
+        List<SmsResponse> myData = schedulerService.getMessages(startDate);
 
 
         // Creating Thymeleaf context and add the data

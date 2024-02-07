@@ -13,14 +13,6 @@ import java.util.List;
 
 public interface SchedulerRepo extends JpaRepository<SmsModel, Long> {
 
-//    LocalDate startDate = LocalDate.of(2023, 11, 22);
-//    LocalDate endDate = LocalDate.of(2023, 7, 21);
-
-//    @Query("SELECT s.txnType AS txnType, COUNT(s) AS smsCount " +
-//            "FROM SmsMessage s " +
-//            "WHERE s.createdOn BETWEEN '2023-11-22 08:30:36.977' AND '2024-01-16 17:41:39.660' " +
-//            "GROUP BY s.txnType")
-
 //    @Query(value =
 //            "SELECT s.TXN_TYPE AS TXN_TYPE, COUNT(s) AS SMS_COUNT " +
 //                    "FROM SmsModel s " +
@@ -41,7 +33,6 @@ public interface SchedulerRepo extends JpaRepository<SmsModel, Long> {
             "FROM SmsModel s " +
             "WHERE s.CREATED_ON BETWEEN :startDate AND :endDate " +
             "GROUP BY s.TXN_TYPE")
-    List<Object[]> getTxnTypeCount(@Param("startDate") LocalDate startDate,
-                                   @Param("endDate") LocalDate endDate);
+    List<Object[]> getTxnTypeCount(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
 }
