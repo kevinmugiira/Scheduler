@@ -3,13 +3,10 @@ package com.example.scheduler.scheduler;
 
 import com.example.scheduler.service.SchedulerService;
 import com.lowagie.text.DocumentException;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -24,7 +21,7 @@ public class ReportGenerationScheduler {
 //    private LocalDate startDate;
     private LocalDate endDate;
 
-    // Method to set the start and end dates
+    // Method to set the dates
     public void setDates(LocalDate endDate) {
 //        this.startDate = startDate;
         this.endDate = endDate;

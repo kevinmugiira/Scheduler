@@ -13,21 +13,6 @@ import java.util.List;
 
 public interface SchedulerRepo extends JpaRepository<SmsModel, Long> {
 
-//    @Query(value =
-//            "SELECT s.TXN_TYPE AS TXN_TYPE, COUNT(s) AS SMS_COUNT " +
-//                    "FROM SmsModel s " +
-//                    "WHERE s.CREATED_ON BETWEEN :startDate AND :endDate AND s.CREATED_ON IS NOT NULL " +
-//                    "GROUP BY s.TXN_TYPE")
-
-
-    //doubles the payload
-//    @Query(value =
-//            "SELECT s.TXN_TYPE AS TXN_TYPE,  " +
-//                    "(COUNT(CASE WHEN s.TXN_TYPE IS NULL THEN 1 ELSE 0 END) + " +
-//                    "COUNT(s.TXN_TYPE)) AS SMS_COUNT " +
-//                    "FROM SmsModel s " +
-//                    "WHERE s.CREATED_ON BETWEEN :startDate AND :endDate " +
-//                    "GROUP BY s.TXN_TYPE")
     @Query(value =
             "SELECT s.TXN_TYPE AS TXN_TYPE, COUNT(COALESCE(s.TXN_TYPE, 'null')) AS SMS_COUNT " +
             "FROM SmsModel s " +

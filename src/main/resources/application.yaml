@@ -6,10 +6,10 @@ spring:
     username: sa
 
 
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.SQLServerDialect
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.SQLServerDialect
 server:
   port: 8081
 

@@ -54,7 +54,7 @@ public class SchedulerController {
     public String getMessages(Model model) {
         List<SmsResponse> myData = schedulerService.getAllTexts();
         model.addAttribute("myData", myData);
-        return "reportTemplate"; // Return the name of the view to render
+        return "reportTemplate";
     }
 
 

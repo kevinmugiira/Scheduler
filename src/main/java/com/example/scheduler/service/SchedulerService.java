@@ -90,40 +90,6 @@ public class SchedulerService {
                 .build();
     }
 
-
-//    public byte[] generateReport(@RequestParam("startDate") LocalDate startDate,
-//                                 @RequestParam("endDate") LocalDate endDate) throws IOException, DocumentException {
-////        List<SmsResponse> myData = schedulerService.getMessages(startDate, endDate);
-//        List<Object[]> myData = schedulerRepo.getTxnTypeCount(startDate, endDate);
-//
-//        // Creating Thymeleaf context and adding the data
-//        Context context = new Context();
-//        context.setVariable("data", myData);
-//
-//        // Rendering the Thymeleaf template as HTML
-//        String htmlContent = templateEngine.process("reportTemplate2", context);
-//
-//        // Generating PDF from HTML using Flying Saucer
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//        ITextRenderer renderer = new ITextRenderer();
-//        renderer.setDocumentFromString(htmlContent);
-//        renderer.layout();
-//        renderer.createPDF(outputStream);
-//
-//
-//        HttpServletResponse response = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getResponse();
-//        // Setting response headers
-//        assert response != null;
-//        response.setContentType("application/pdf");
-//        response.setHeader("Content-Disposition", "inline; filename=report.pdf");
-//
-//        // Writing PDF content to the response
-//        response.getOutputStream().write(outputStream.toByteArray());
-//        response.getOutputStream().flush();
-//
-//        return outputStream.toByteArray();
-//    }
-
     public void generateReport(LocalDate endDate) throws DocumentException, IOException  {
 
         // Calculate the endDate (one month prior to startDate)
