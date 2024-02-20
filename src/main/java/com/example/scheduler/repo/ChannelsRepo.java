@@ -9,11 +9,4 @@ import java.util.List;
 
 public interface ChannelsRepo extends JpaRepository<ChannelsModel, Long> {
 
-//    @Query(value =
-//            "SELECT c.CHANNEL" +
-//            "FROM ChannelsModel c" +
-//    )
-//    List<ChannelsModel> getAllChannels() {
-//
-//    }
 }

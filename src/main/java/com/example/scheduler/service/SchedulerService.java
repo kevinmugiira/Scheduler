@@ -36,10 +36,9 @@ public class SchedulerService {
     private static final Logger logger = LoggerFactory.getLogger(SchedulerController.class);
 
 
-    public List<SmsResponse> getMessages(LocalDate endDate) {
+    public List<SmsResponse> getMessages(LocalDate startDate, LocalDate endDate) {
 
         // Calculate the endDate (one month prior to startDate)
-        LocalDate startDate = endDate.minusMonths(1);
         List<Object[]> messages = schedulerRepo.getTxnTypeCount(startDate, endDate);
         System.out.println(messages);
         logger.info("Size of myData: {}", messages.size());
@@ -100,6 +99,9 @@ public class SchedulerService {
         List<ChannelsModel> myChannels = channelsRepo.findAll();
         Context context = new Context();
         context.setVariable("data", myData);
+        context.setVariable("endDate", endDate);
+        context.setVariable("startDate", endDate.minusMonths(1));
+
         if (myChannels != null) {
             context.setVariable("data2", myChannels);
         } else {

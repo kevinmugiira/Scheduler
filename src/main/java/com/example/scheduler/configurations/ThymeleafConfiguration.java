@@ -3,7 +3,8 @@ package com.example.scheduler.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+//import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
@@ -14,7 +15,6 @@ public class ThymeleafConfiguration {
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.addTemplateResolver(htmlTemplateResolver());
-        // Add any additional configurations if needed
         return templateEngine;
     }
 
